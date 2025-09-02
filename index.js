@@ -39,16 +39,17 @@ const client = new Client({
   },
   puppeteer: {
     headless: true,
+    executablePath: '/usr/bin/chromium',
     args: [
-          '--no-sandbox',
-          '--disable-setuid-sandbox',
-          '--disable-dev-shm-usage',
-          '--disable-accelerated-2d-canvas',
-          '--no-first-run',
-          '--no-zygote',
-          '--single-process',
-          '--disable-gpu'
-    ]
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-accelerated-2d-canvas',
+            '--no-first-run',
+            '--no-zygote',
+            '--single-process',
+            '--disable-gpu'
+     ]
   }
 });
 
@@ -222,5 +223,6 @@ async function syncAllContacts() {
 // Start
 client.initialize();
 app.listen(PORT, () => console.log(`Server listening on http://localhost:${PORT}`));
+
 
 
