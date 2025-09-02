@@ -12,7 +12,10 @@ const rimraf = require('rimraf');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const qrcodeTerminal = require('qrcode-terminal');
-app.use(cors());
+const corsOptions = {
+  origin: 'http://localhost:5173'
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -221,6 +224,7 @@ async function syncAllContacts() {
 // Start
 client.initialize();
 app.listen(PORT, () => console.log(`Server listening on http://localhost:${PORT}`));
+
 
 
 
