@@ -47,7 +47,8 @@ const client = new Client({
       '--no-zygote',
       '--single-process',
       '--disable-gpu'
-    ]
+    ],
+    executablePath: process.env.CHROMIUM_PATH || undefined
   }
 });
 // Helpers
@@ -220,6 +221,7 @@ async function syncAllContacts() {
 // Start
 client.initialize();
 app.listen(PORT, () => console.log(`Server listening on http://localhost:${PORT}`));
+
 
 
 
