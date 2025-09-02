@@ -168,7 +168,7 @@ client.on('disconnected', reason => {
 
 // Basic endpoints
 app.get('/whatsapp-status', (req, res) => res.json({
-  connected: isConnected, authenticated: isAuthenticated, ready: isClientReady, hasQR: !!lastQrCode
+  connected: isConnected, authenticated: isAuthenticated, ready: isClientReady, hasQR: !!lastQrCode,qrCodeUrl: lastQrCode
 }));
 
 app.get('/whatsapp-diagnose', async (req, res) => {
@@ -224,6 +224,7 @@ async function syncAllContacts() {
 // Start
 client.initialize();
 app.listen(PORT, () => console.log(`Server listening on http://localhost:${PORT}`));
+
 
 
 
