@@ -12,8 +12,18 @@ const rimraf = require('rimraf');
 const app = express();
 const PORT = process.env.PORT || 8080;
 const qrcodeTerminal = require('qrcode-terminal');
-app.use(cors({ origin: "*", methods: ["GET","POST","OPTIONS"], allowedHeaders: ["*"] }));
-app.options("*", cors());
+app.use(cors({
+  origin: "https://backoff.travel4you.ma",   // <-- OK ici
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
+
+// gérer les préflights OPTIONS
+app.options("*", cors({
+  origin: "https://backoff.travel4you.ma",
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -227,6 +237,7 @@ client.initialize();
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Server listening on http://0.0.0.0:${PORT}`);
 });
+
 
 
 
