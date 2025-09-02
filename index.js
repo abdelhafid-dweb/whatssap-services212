@@ -48,6 +48,9 @@ const client = new Client({
       '--no-zygote',
       '--single-process',
       '--disable-gpu',
+      '--disable-web-security',
+      '--disable-features=IsolateOrigins',
+      '--disable-site-isolation-trials'
     ]
   }
 });
@@ -221,6 +224,7 @@ async function syncAllContacts() {
 // Start
 client.initialize();
 app.listen(PORT, () => console.log(`Server listening on http://localhost:${PORT}`));
+
 
 
 
