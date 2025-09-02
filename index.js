@@ -30,29 +30,26 @@ let authRecoveryTriggered = false;
 // Change webVersion to a version that works for you if needed.
 const client = new Client({
   authStrategy: new LocalAuth(),
-  webVersion: '2.2412.54', // start with a stable version you tested
+  webVersion: '2.2412.54', // stable version
   webVersionCache: {
     type: 'remote',
-    // {version} will be replaced automatically
     remotePath: 'https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/{version}.html',
     strict: false
   },
   puppeteer: {
     headless: true,
-    executablePath: '/usr/bin/chromium',
     args: [
-            '--no-sandbox',
-            '--disable-setuid-sandbox',
-            '--disable-dev-shm-usage',
-            '--disable-accelerated-2d-canvas',
-            '--no-first-run',
-            '--no-zygote',
-            '--single-process',
-            '--disable-gpu'
-     ]
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage',
+      '--disable-accelerated-2d-canvas',
+      '--no-first-run',
+      '--no-zygote',
+      '--single-process',
+      '--disable-gpu'
+    ]
   }
 });
-
 // Helpers
 async function safeDestroy() {
   try {
@@ -223,6 +220,7 @@ async function syncAllContacts() {
 // Start
 client.initialize();
 app.listen(PORT, () => console.log(`Server listening on http://localhost:${PORT}`));
+
 
 
 
